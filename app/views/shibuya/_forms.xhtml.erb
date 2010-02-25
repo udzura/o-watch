@@ -1,0 +1,14 @@
+<div style="background-color:#aaa;color:#009;">
+<%- form_tag({:action => :search, :format => :xhtml}, {:method => :get}) do %>
+<div style="font-size:x-small;"><a id="search">□</a>アーティスト名・イベント検索</div>
+<%= text_field_tag "query", q, :size => 12 %>
+<%= submit_tag "検索" %>
+<%- end %>
+</div>
+<div style="background-color:#ccc;color:#070;">
+<%- form_tag({:action => :day, :format => :xhtml}, {:method => :post}) do %>
+<div style="font-size:x-small;"><a id="to_day">■</a>特定の日の予定を表示</div>
+<%= select_date Date.today, :use_month_numbers => true, :start_year => Date.today.year %>
+<%= submit_tag "表示" %>
+<%- end %>
+</div>

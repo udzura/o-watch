@@ -1,0 +1,47 @@
+<div style="background-color:#ffdddd;"><br />
+<div style="color:#dd0000;"><h1><a id="top">Welcome to</a></h1></div>
+<h2>Shibuya Live Watch</h2>
+<br /></div>
+
+<%= render :partial => "forms", :locals => {:q => ""} %>
+
+<p>|<%- @dates.each do |the_date| %><%=link_to "#{the_date.day}日", "#dt#{the_date.day}" %>|<%- end %><%=link_to "[次の5日&#xE708;]", shibuya_path((@dates.last + 1).to_s) %>|
+</p>
+
+
+<% @dates.each do |the_date| %>
+<div style="background-color:#dddddd;color:#aa0000;margin-bottom:0;">
+<h2 class="date_head">
+<a id="dt<%= the_date.day %>">
+<%=h the_date.strftime("%Y年%m月%d日(%a)") %>
+</a></h2>
+</div>
+<div style="margin-top:0;background-color:#dddddd;color:#aa0000;text-align:right;">
+<h2 class="nav2"><%= head_navi_link(the_date, @dates) %>
+</h2></div>
+<br />
+
+  <% @schedules[the_date].each_with_index do |schedule, idx| %>
+<div style="background-color:#ccffcc;color:#008822;text-align:right;">
+<%= sub_navi_link(the_date, idx, @schedules[the_date].size) %>
+</div>
+<div style="background-color:#ccffcc;color:#008822;">
+<h3>＜<%=h schedule.live_house_name %>＞
+</h3>
+</div>
+
+<div style="background-color:#eee4dd;color:#332200;">
+<h4>&#xE6F6;<%=h2 schedule.title %></h4>
+</div>
+
+<p>&#xE691;<%=to_info schedule.desc %></p>
+<p>→→ <%= link_to "詳細", schedule.permlink %></p>
+  <% end %>
+<% end %>
+
+<div><a id="bottom">＊　＊　＊</a></div>
+
+<p>|<%- @dates.each do |the_date| %><%=link_to "#{the_date.day}日", "#dt#{the_date.day}" %>|<%- end %><%=link_to "[次の5日&#xE708;]", shibuya_path((@dates.last + 1).to_s) %>|
+</p><p><%=link_to "ページ一番↑", "#top" %>
+<%= link_to "[検索]" , "#search" %>|<%= link_to "[日付指定]", "#to_day" %>
+</p>

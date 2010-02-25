@@ -1,0 +1,16 @@
+<div style="text-align:center;">
+<h1>Shibuya Live Watch... 開発中</h1>
+<p>PC版は現在開発中です。<p>
+
+<div class="qr_code"><img src="/images/qr.jpg" alt="" />
+<p>モバイル版を、同じURLでサービスインしています（α-test、iPhone/WILLCOM閲覧可能）。<p>
+<p>しばらく、ご利用の際はそちらへアクセスをお願いいたします。<p>
+<p>　</p>
+<h3>または</h3>
+<%- form_tag({:action => :index}, {:method => :get}) do %>
+<%= hidden_field_tag "mobile", "true" %>
+<%= submit_tag "PCからモバイルモードで表示する" %>
+<%- end%>
+</div>
+</div>
+

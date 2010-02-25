@@ -1,0 +1,7 @@
+<div style="background-color:#aaa;color:#009;">
+<%- form_tag({:action => :search, :format => :xhtml}, {:method => :get}) do %>
+<div style="font-size:x-small;"><a id="search">□</a>アーティスト名・イベント再検索</div>
+<%= text_field_tag "query", q, :size => 12 %>
+<%= submit_tag "検索" %>
+<%- end %>
+</div>

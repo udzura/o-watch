@@ -1,0 +1,7 @@
+log/*
+tmp/*
+config/database.yml
+db/schema.rb
+nbproject/*
+lib/batch/parse_schedule_staging.rb
+lib/batch/parse_schedule_staging.sh

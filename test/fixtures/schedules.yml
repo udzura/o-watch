@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ym: MyString
+  date: 2010-02-21
+  live_house_id: 1
+  title: MyString
+  desc: MyText
+  permlink: MyString
+
+two:
+  ym: MyString
+  date: 2010-02-21
+  live_house_id: 1
+  title: MyString
+  desc: MyText
+  permlink: MyString

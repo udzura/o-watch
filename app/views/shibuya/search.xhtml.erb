@@ -1,0 +1,53 @@
+<div style="background-color:#ffdddd;"><br />
+<h1><a id="top">Shibuya Live Watch</a></h1>
+<br /></div>
+<br />
+<div style="background-color:#ffeeaa;"><h2>検索結果:</h2></div>
+<div style="background-color:#ffeeaa;text-align:right;"><h2><%=h @query %></h2></div>
+
+<p><%- @schedules.each do |schedule| %><%=
+  link_to "#{schedule.date.strftime("%m/%d(%a)")}:#{schedule.title.split(//)[0..22].join}...@#{schedule.live_house_name}", "#res#{schedule.id}"
+%><br /><%- end %>
+<%= schedule_paginate @page, @count, @query2 %><br />
+<%=link_to "[&#xE6EB;TopPage]",
+ {:action => :index, :format => :xhtml}, {:accesskey => "0"} %>|<%=link_to "[&#xE6E9;再検索&#xE6DC;]",
+ "#bottom", {:accesskey => "8"} %>
+</p>
+
+<% @schedules.each do |schedule| %>
+<div style="background-color:#dddddd;color:#aa0000;margin-bottom:0;">
+<h2 class="date_head">
+<a id="res<%= schedule.id %>">
+<%=h schedule.date.strftime("%Y年%m月%d日(%a)") %>
+</a></h2>
+</div>
+<div style="background-color:#ccffcc;color:#008822;">
+<h3>　　＠ &#xE663;<%=h schedule.live_house_name %>
+</h3>
+</div>
+<div style="margin-top:0;background-color:#dddddd;color:#aa0000;text-align:right;">
+<h4 class="nav2"><%= search_navi_link(schedule.id, @schedule_ids) %>
+</h4></div>
+
+<div style="background-color:#eee4dd;color:#332200;">
+<h4>&#xE6F6;<%=emphasize_q(h2(schedule.title), @query) %></h4>
+</div>
+
+<p>&#xE691;<%=emphasize_q(to_info(schedule.desc), @query) %></p>
+<p>→→ <%= link_to "詳細", schedule.permlink %></p>
+<% end %>
+
+<div><a id="bottom">＊　＊　＊</a></div>
+<br />
+<%= render :partial => "search_forms", :locals => {:q => @query} %>
+
+<p>
+<%=link_to "[&#xE6EB;TopPage]",
+ {:action => :index, :format => :xhtml} %>|<%=link_to "[&#xE6E2;ページ上部へ]",
+ "#top", {:accesskey => "1"} %><br />
+<%= schedule_paginate @page, @count, @query2 %><br />
+<%- @schedules.each do |schedule| %><%=
+  link_to "#{schedule.date.strftime("%m/%d(%a)")}:#{schedule.title[0..22]}...@#{schedule.live_house_name}", "#res#{schedule.id}"
+%><br /><%- end %>
+</p>
+

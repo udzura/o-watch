@@ -1,0 +1,33 @@
+<p>
+  <b>Ym:</b>
+  <%=h @schedule.ym %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @schedule.date %>
+</p>
+
+<p>
+  <b>Live house:</b>
+  <%=h @schedule.live_house_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @schedule.title %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%=h @schedule.desc %>
+</p>
+
+<p>
+  <b>Permlink:</b>
+  <%=h @schedule.permlink %>
+</p>
+
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>

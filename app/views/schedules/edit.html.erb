@@ -1,0 +1,36 @@
+<h1>Editing schedule</h1>
+
+<% form_for(@schedule) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :ym %><br />
+    <%= f.text_field :ym %>
+  </p>
+  <p>
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
+    <%= f.label :live_house_id %><br />
+    <%= f.text_field :live_house_id %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :desc %><br />
+    <%= f.text_area :desc %>
+  </p>
+  <p>
+    <%= f.label :permlink %><br />
+    <%= f.text_field :permlink %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @schedule %> |
+<%= link_to 'Back', schedules_path %>

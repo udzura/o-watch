@@ -1,0 +1,8 @@
+
+<div style="background-color:#ccc;color:#070;">
+<%- form_tag({:action => :day, :format => :xhtml}, {:method => :post}) do %>
+<div style="font-size:x-small;"><a id="to_day">■</a>特定の日の予定を表示</div>
+<%= select_date d, :use_month_numbers => true, :start_year => Date.today.year %>
+<%= submit_tag "表示" %>
+<%- end %>
+</div>

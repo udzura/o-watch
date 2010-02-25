@@ -1,0 +1,38 @@
+<%- if request.mobile && request.mobile.docomo? %><?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE html PUBLIC "-//i-mode group (ja)//DTD XHTML i-XHTML(Locale/Ver.=ja/1.0) 1.0//EN" "i-xhtml_4ja_10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=Shift_JIS" />
+
+<%- else %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<%- end %>
+  <title>Schedule: <%= controller.action_name %></title>
+  <%# = stylesheet_link_tag 'mobile' %>
+</head>
+<body>
+<%- if flash[:notice] && !flash[:notice].empty? %>
+<p style="color: green"><%= flash[:notice] %></p>
+<%- end %>
+<%= yield %>
+
+<p>----</p>
+
+
+<div style="background-color:#888888;">
+<address>
+  ＊ (c) Udzura Kondo 2010 <br />
+  @ <%= link_to "udzura.jp", "http://udzura.jp" %> ＜＜ To Contact.
+</address>
+  <hr />
+  <br />
+  <div style="text-align:center">
+<%= link_to(image_tag('http://b12.ugo2.jp/?u=5029963&amp;h=b40c00&amp;guid=ON&amp;ut=1&amp;qM='+URI.encode(request.referer ? request.referer : '')+'|AzR|'+request.env['SERVER_PORT'].to_s+'|'+request.env['HTTP_X_FORWARDED_HOST'].to_s+'|'+request.env['REQUEST_URI'].to_s+'|Y|&amp;ch=UTF-8&amp;sb='+URI.encode('[page title]'), :border => '0', :size => '72x16', :alt=>'携帯アクセス解析'), 'http://ugo2.jp/m/') %>
+  </div>
+  <br />
+</div>
+</body>
+</html>

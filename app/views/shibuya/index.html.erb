@@ -1,0 +1,49 @@
+<h1>Shibuya Live Watch... index</h1>
+
+<div class="qr_code"><img src="/images/qr.jpg" alt="" />
+<p>モバイル版も同じURLで！<p></div>
+
+<% @dates.each_slice(5) do |date_set| %>
+
+<h2><%= date_set.first.strftime("%Y/%m/%d (%a)") %> ～
+<%= date_set.last.strftime("%Y/%m/%d (%a)") %></h2>
+<table width="1200">
+  <tr>
+    <th>日付</th>
+  <% @houses.keys.sort.each do |hid| %>
+    <th><%=h @houses[hid].name %></th>
+  <% end %>
+  </tr>
+  <% date_set.each do |the_date| %>
+  <tr>
+    <th rowspan="2"><%= the_date.strftime("%b<br />%d,<br />%Y<br />(%a)") %></th>
+    <% @houses.keys.sort.each do |hid| %>
+    <%- if @schedules[the_date][hid] %>
+      <td valign="top">
+      <h4 class="live_title"><%=h @schedules[the_date][hid].title %></h4>
+      </td>
+    <%- else %>
+      <td rowspan="2" class="empty_day">
+      <h4>予定なし</h4>
+      </td>
+    <%- end %>
+    <% end %>
+  </tr>
+  <tr>
+    <% @houses.keys.sort.each do |hid| %>
+    <%- if @schedules[the_date][hid] %>
+      <td valign="top">
+      <p class="live_desc"><%=to_info @schedules[the_date][hid].desc %></p>
+      <p class="live_permlink">＞＞<%= link_to "詳細", @schedules[the_date][hid].permlink %></p>
+      </td>
+    <%- else %>
+
+    <%- end %>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+
+<hr />
+
+<% end %>
