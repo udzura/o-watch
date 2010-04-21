@@ -131,7 +131,7 @@ class ShibuyaController < ApplicationController
   #      :page => params[:p],
   #      :per_page => 5
   #    )
-      @schedules = Schedule.fulltext_search(
+      @schedules = Schedule.fulltext_search2(
         @query,
         :order => 'date_atr'
       )

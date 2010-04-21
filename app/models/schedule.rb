@@ -39,4 +39,9 @@ class Schedule < ActiveRecord::Base
 <p>&#xE691;#{snip_desc.gsub(/<[^u]*?>/, "").gsub("\n", "<br />")}</p>
 EOH
   end
+
+  #monkey patch
+  def self.fulltext_search2(q, opts={})
+    self.find(:all, :conditions => ["(schedules.title like ? or schedules.desc like ?)", "%#{q}%", "%#{q}%"])
+  end
 end
