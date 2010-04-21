@@ -137,7 +137,7 @@ class ShibuyaController < ApplicationController
       )
       @schedules.delete_if{|s| s.date < Date.today}
       @schedules.reverse!
-      @count = @schedules.count
+      @count = @schedules.size
       @page = (params[:p] && params[:p].to_i > 0) ? params[:p].to_i : 1
       @schedules = (@schedules[(-5 + 5 * @page.to_i)..(-1 + 5 * @page.to_i)] || [])
       @schedule_ids = @schedules.map(&:id)
